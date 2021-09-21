@@ -1,10 +1,10 @@
 package tpl
 
 func MainTemplate() []byte {
-	return []byte(`/*
+	return []byte(`{{if .RawHeader }}{{ .RawHeader }}{{ else }}/*
 {{ .Copyright }}
 {{ if .Legal.Header }}{{ .Legal.Header }}{{ end }}
-*/
+*/{{end}}
 package main
 
 import "{{ .PkgName }}/cmd"
@@ -16,10 +16,10 @@ func main() {
 }
 
 func RootTemplate() []byte {
-	return []byte(`/*
+	return []byte(`{{if .RawHeader }}{{ .RawHeader }}{{ else }}/*
 {{ .Copyright }}
 {{ if .Legal.Header }}{{ .Legal.Header }}{{ end }}
-*/
+*/{{end}}
 package cmd
 
 import (
@@ -101,10 +101,10 @@ func initConfig() {
 }
 
 func AddCommandTemplate() []byte {
-	return []byte(`/*
+	return []byte(`{{if .Project.RawHeader }}{{ .Project.RawHeader }}{{ else }}/*
 {{ .Project.Copyright }}
 {{ if .Legal.Header }}{{ .Legal.Header }}{{ end }}
-*/
+*/{{end}}
 package cmd
 
 import (

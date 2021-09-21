@@ -15,6 +15,7 @@ type Project struct {
 	PkgName      string
 	Copyright    string
 	AbsolutePath string
+	RawHeader    string
 	Legal        License
 	Viper        bool
 	AppName      string
@@ -69,6 +70,10 @@ func (p *Project) Create() error {
 }
 
 func (p *Project) createLicenseFile() error {
+	if len(p.RawHeader) > 0 && len(p.Legal.Text) == 0 {
+		//do not create LICENSE file
+		return nil
+	}
 	data := map[string]interface{}{
 		"copyright": copyrightLine(),
 	}

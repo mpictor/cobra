@@ -66,6 +66,7 @@ func initializeProject(args []string) (string, error) {
 		AbsolutePath: wd,
 		PkgName:      pkgName,
 		Legal:        getLicense(),
+		RawHeader:    viper.GetString("rawHeader"),
 		Copyright:    copyrightLine(),
 		Viper:        viper.GetBool("useViper"),
 		AppName:      path.Base(pkgName),

@@ -19,6 +19,7 @@ import (
 	"unicode"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var (
@@ -53,6 +54,7 @@ Example: cobra add server -> resulting in a new cmd/server.go`,
 				Project: &Project{
 					AbsolutePath: wd,
 					Legal:        getLicense(),
+					RawHeader:    viper.GetString("rawHeader"),
 					Copyright:    copyrightLine(),
 				},
 			}

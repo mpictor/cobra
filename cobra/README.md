@@ -127,3 +127,21 @@ Copyright © 2020 Steve Francia <spf@spf13.com>
 This file is part of CLI application foo.
 */
 ```
+
+If you don't want a C-style comment or don't want that particular format (perhaps because of an automated license check that expects something different) you can use `rawHeader`, like so:
+```yaml
+
+license: none
+
+rawHeader: |
+    // Copyright blah blah Authors. All Rights Reserved.
+    // Blah?
+    // Blah!
+    //
+    // SPDX-License-Identifier: BL-ah
+    //
+```
+
+Note that `rawHeader`'s content _must_ be a valid comment, as-is. Unlike `license.header`, it is not wrapped in a block comment.
+
+If `rawHeader` is present and `license` is set to `none`, the LICENSE file will not be written.
